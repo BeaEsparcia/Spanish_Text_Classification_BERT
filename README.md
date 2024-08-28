@@ -103,6 +103,12 @@ Las contribuciones a este proyecto son bienvenidas. Por favor, siéntete libre d
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo LICENSE.md para más detalles.
 
+## Contacto
+
+Beatriz Esparcia - esparcia.beatriz@gmail.com
+LinkedIn: Beatriz Esparcia
+Link del Proyecto: https://github.com/tu-usuario/analisis-sentimientos-feminismo
+
 
    
 
