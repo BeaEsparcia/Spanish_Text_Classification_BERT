@@ -29,13 +29,13 @@ Este proyecto implementa un modelo de clasificación de texto utilizando BERT (B
 ## Instalación
 
 1. Clona este repositorio:
-   git clone https://github.com/BeaEsparcia/clasificacion-texto-espanol-bert.git
+   git clone https://github.com/BeaEsparcia/clasificacion_texto_espanol_bert.git
 2. Navega al directorio del proyecto:
    cd clasificador-texto-espanol-bert
 3. Instala los paquetes requeridos:
    pip install -r requirements.txt
-4. Asegúrate de tener Jupyter Notebook instalado:
-   pip install jupyter
+4. Asegúrate de tener Jupyter Notebook instalado: 
+   pip install jupyter (como alternativa puedes usar Google Colab)
 
 ## Uso
 
@@ -43,6 +43,10 @@ Este proyecto implementa un modelo de clasificación de texto utilizando BERT (B
    jupyter notebook
 2. Abre el archivo Clasificacion_texto_espanol_BERT.ipynb en la interfaz de Jupyter.
 3. Ejecuta las celdas del notebook secuencialmente o usa "Run All".
+4. Si prefieres usar Google Colab:
+   - Ve a Google Colab.
+   - Selecciona "Archivo" > "Subir cuaderno" y sube el archivo .ipynb desde tu máquina.
+5. Una vez abierto el cuaderno, puedes ejecutar las celdas secuencialmente para ver el proceso y los resultados.
 
 Nota: El conjunto de datos está incluido directamente en el notebook, por lo que no es necesario cargar datos externos. Todas las operaciones, desde la carga de datos hasta la evaluación del modelo, se realizan dentro del notebook.
 
