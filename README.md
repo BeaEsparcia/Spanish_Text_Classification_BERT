@@ -1,113 +1,124 @@
-# clasificacion_texto_espanol_bert
-## Clasificador de texto en español utilizando BERT para categorizar mensajes en solicitudes, quejas y recomendaciones.
+# Text Classification in Spanish using BERT
+## Project Overview
 
-Este proyecto implementa un modelo de clasificación de texto utilizando BERT (Bidirectional Encoder Representations from Transformers) para categorizar mensajes en español en tres clases: solicitudes de información, quejas o reclamaciones, y recomendaciones. El objetivo es demostrar la capacidad de utilizar modelos de lenguaje preentrenados para tareas de clasificación de texto en español, incluyendo la preparación de datos, entrenamiento del modelo, evaluación y análisis de resultados.
+This project implements a **text classification system using BERT** (Bidirectional Encoder Representations from Transformers) to **categorize Spanish messages into three categories**:
+1. Information Requests
+2. Complaints
+3. Recommendations
 
-## Características
+The goal is to demonstrate the potential of pre-trained language models for Spanish text classification, covering data preparation, model training, evaluation, and error analysis.
 
-- Utiliza un modelo BERT preentrenado en español (dccuchile/bert-base-spanish-wwm-uncased)
-- Implementa un sistema de clasificación de tres clases
-- Incluye técnicas de preparación y aumento de datos
-- Proporciona una evaluación completa del modelo y visualización de resultados
-- Explora ejemplos desafiantes para probar los límites del modelo
+## Key Features
 
-## Tecnologías utilizadas
+- Utilizes the pre-trained model:(dccuchile/bert-base-spanish-wwm-uncased).
+- Implements a three-class classification system.
+- Applies data augmentation techniques.
+- Provides detailed evaluation of model performance.
+- Explores challenging examples to test the model’s limits.
+
+## Why It Matters
+
+**Efficient classification of user messages is essential for improving customer service, detecting key trends in feedback, and prioritizing responses.**
+This project shows how state-of-the-art language models can be leveraged to understand customer input in Spanish, a language that is often underrepresented in NLP research.
+
+## Dataset
+
+- Dataset is embedded directly in the notebook.
+- Consists of Spanish messages labeled into the three categories: requests, complaints, recommendations.
+- Augmented to ensure 100 examples per class to improve model training.
+
+## Technologies Used
 
 - **Python**
 - **Jupyter Notebook**
-- **Pandas** para manipulación de datos
-- **Scikit-learn** para división de datos y métricas de evaluación
-- **Simpletransformers** para una fácil implementación de modelos BERT
-- **Matplotlib y Seaborn** para visualización de datos
+- **Pandas** for data manipulation
+- **Scikit-learn** for data splitting and evaluation metrics
+- **Simpletransformers** for easy implementation of BERT models
+- **Matplotlib y Seaborn** Matplotlib & Seaborn: for result visualization
 
-## Requisitos del sistema
+## Installation and Usage
 
-- Python 3.7+
-- CUDA compatible GPU (recomendado para entrenamiento más rápido)
-- Entorno de ejecución con soporte para GPU
+### Option 1: Local Execution
 
-## Instalación
-
-1. Clona este repositorio:
+1. Clone the repository:
    git clone https://github.com/BeaEsparcia/clasificacion_texto_espanol_bert.git
-2. Navega al directorio del proyecto:
-   cd clasificador-texto-espanol-bert
-3. Instala los paquetes requeridos:
+cd clasificacion_texto_espanol_bert
+2. Install the required packages:
    pip install -r requirements.txt
-4. Asegúrate de tener Jupyter Notebook instalado: 
-   pip install jupyter (como alternativa puedes usar Google Colab)
-
-## Uso
-
-1. Inicia Jupyter Notebook:
+3. Launch Jupyter Notebook:
    jupyter notebook
-2. Abre el archivo Clasificacion_texto_espanol_BERT.ipynb en la interfaz de Jupyter.
-3. Ejecuta las celdas del notebook secuencialmente o usa "Run All".
-4. Si prefieres usar Google Colab:
-   - Ve a Google Colab.
-   - Selecciona "Archivo" > "Subir cuaderno" y sube el archivo .ipynb desde tu máquina.
-5. Una vez abierto el cuaderno, puedes ejecutar las celdas secuencialmente para ver el proceso y los resultados.
+4. Open Clasificacion_texto_espanol_BERT.ipynb and run all cells
 
-Nota: El conjunto de datos está incluido directamente en el notebook, por lo que no es necesario cargar datos externos. Todas las operaciones, desde la carga de datos hasta la evaluación del modelo, se realizan dentro del notebook.
+### Option 2: Run on Google Colab
 
-## Estructura del proyecto
+1. Open Google Colab.
+2. Upload Clasificacion_texto_espanol_BERT.ipynb.
+3. Ensure runtime is set to GPU:
+   - Go to "Runtime" > "Change runtime type"
+   - Select "GPU"
+4. Run all cells.
 
-- Clasificacion_texto_espanol_bERT.ipynb: Notebook principal con todo el código del proyecto
-- requirements.txt: Lista de paquetes de Python requeridos
+- If needed, ad:
+  !pip install simpletransformers pandas scikit-learn matplotlib seaborn
 
-## Proceso de desarrollo
+## Methodology
 
-## Desafíos iniciales y soluciones
+### Preprocessing & Data Augmentation
 
-1. **Problema**: Resultados de evaluación pobres (MCC de 0.0, eval_loss de 1.09783935546875).
-   **Solución**: Aumento del dataset a 100 ejemplos por categoría.
-2. **Problema**: Uso de modelo pre-entrenado en inglés.
-   **Solución**: Cambio a un modelo pre-entrenado en español (dccuchile/bert-base-spanish-wwm-uncased).
-3. **Advertencia**: Conflicto entre `os.fork()` y JAX.
-   **Solución**: Se implementó la siguiente línea de código para resolver el conflicto:
-   ```python
-   mp.set_start_method('spawn', force=True)
+- Conversion to lowercase.
+- Handling ambiguous messages.
+- Augmenting the dataset to 100 examples per class.
 
-## Mejoras implementadas
+### Model Selection
 
-- Adición de métricas detalladas: precisión, recall y F1-score para cada clase.
-- Revisión de sobreajuste mediante la introducción de ejemplos más desafiantes.
+- Initial tests with an English BERT model led to poor results.
+- Switching to dccuchile/bert-base-spanish-wwm-uncased improved classification.
 
-## Evaluación con ejemplos desafiantes
+### Training Process
 
-- Precisión con ejemplos desafiantes: 0.47 (47% de clasificaciones correctas).
-- Los ejemplos desafiantes incluyen:
-     1. Ambigüedad entre categorías.
-     2. Complejidad lingüística aumentada.
-     3. Contextos mixtos en un solo mensaje.
-     4. Sutileza que requiere comprensión profunda del contexto.
+- Used Simpletransformers for efficient fine-tuning.
+- Applied cross-validation and monitored overfitting signs.
 
-## Próximos pasos
+### Evaluation
 
-1. Ampliar el conjunto de datos con más ejemplos complejos y ambiguos.
-2. Ajuste fino de hiperparámetros y técnicas de regularización.
-3. Análisis detallado de errores de clasificación.
-4. Implementación de técnicas avanzadas de preprocesamiento de texto.
-5. Evaluación de modelos más complejos o con arquitecturas diferentes.
+- Precision, Recall, and F1-score calculated for each class.
+- Error analysis performed on misclassified messages.
 
-## Notas importantes
+## Results & Observations
 
-1. Se recomienda el uso de una GPU compatible con CUDA para un entrenamiento más eficiente.
-2. El entorno de ejecución debe tener soporte para GPU para aprovechar al máximo el rendimiento del modelo.
+- Overall Accuracy: Improved after switching to a Spanish pre-trained model.
+- Performance on challenging cases: 47% accuracy on specially curated hard-to-classify messages.
+- Key challenges:
+     - Ambiguity between categories (some requests felt like recommendations).
+     - Mixed context within a single message.
+     - Linguistic complexity (informal language, sarcasm, abbreviations).
 
-## Contribuciones
+## Limitations & Future Improvements
 
-Las contribuciones a este proyecto son bienvenidas. Por favor, siéntete libre de abrir un issue o enviar un pull request.
+- Expand dataset: Collect more diverse and complex messages.
+- Fine-tuning: Explore hyperparameter tuning and regularization.
+- Advanced preprocessing: Explore techniques like entity recognition or semantic clustering.
+- Compare with other architectures: Test DistilBERT, RoBERTa, or newer multilingual models.
 
-## Licencia
+## What I Learned
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo LICENSE.md para más detalles.
+- **Model choice matters:** Starting with an English model gave poor results, but switching to a Spanish-specific model was a game changer.
+- **Data quality is everything:** Adding just a few challenging examples exposed weaknesses that traditional metrics didn’t reveal.
+- **Spanish NLP still needs work:** Many models and tools are heavily optimized for English, making it crucial to test and adapt when working in Spanish.
 
-## Contacto
+## Contributions
+
+Contributions are welcome! Please open an issue to propose changes or improvements.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE.md file for details.
+
+## Contact
 
 Beatriz Esparcia - esparcia.beatriz@gmail.com
 LinkedIn: www.linkedin.com/in/beaesparcia
-Link del Proyecto: https://github.com/tu-usuario/analisis-sentimientos-feminismo
+Project Link: https://github.com/tu-usuario/analisis-sentimientos-feminismo
 
 
    
