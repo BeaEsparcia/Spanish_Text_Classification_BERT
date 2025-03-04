@@ -95,10 +95,10 @@ cd clasificacion_texto_espanol_bert
 
 ## Limitations & Future Improvements
 
-- Expand dataset: Collect more diverse and complex messages.
-- Fine-tuning: Explore hyperparameter tuning and regularization.
-- Advanced preprocessing: Explore techniques like entity recognition or semantic clustering.
-- Compare with other architectures: Test DistilBERT, RoBERTa, or newer multilingual models.
+- **Expand dataset:** Collect more diverse and complex messages.
+- **Fine-tuning:** Explore hyperparameter tuning and regularization.
+- **Advanced preprocessing:** Explore techniques like entity recognition or semantic clustering.
+- **Compare with other architectures:** Test DistilBERT, RoBERTa, or newer multilingual models.
 
 ## What I Learned
 
