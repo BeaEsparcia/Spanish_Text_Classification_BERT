@@ -41,7 +41,7 @@ This project shows how state-of-the-art language models can be leveraged to unde
 ### Option 1: Local Execution
 
 1. Clone the repository:
-   git clone https://github.com/BeaEsparcia/clasificacion_texto_espanol_bert.git
+   git clone https://github.com/BeaEsparcia/Spanish_Text_Classification_BERT.git
 cd clasificacion_texto_espanol_bert
 2. Install the required packages:
    pip install -r requirements.txt
@@ -118,7 +118,7 @@ This project is licensed under the MIT License. See the LICENSE.md file for deta
 
 Beatriz Esparcia - esparcia.beatriz@gmail.com
 LinkedIn: www.linkedin.com/in/beaesparcia
-Project Link: https://github.com/tu-usuario/analisis-sentimientos-feminismo
+
 
 
    
