@@ -1,8 +1,8 @@
 pandas
 scikit-learn
 simpletransformers
+transformers
+torch
 matplotlib
 seaborn
 jupyter
-torch
-transformers
