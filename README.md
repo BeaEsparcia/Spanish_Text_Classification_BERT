@@ -1,118 +1,126 @@
 # Text Classification in Spanish using BERT
 ## Project Overview
 
-This project implements a **text classification system using BERT** (Bidirectional Encoder Representations from Transformers) to **categorize Spanish messages into three categories**:
-1. Information Requests
-2. Complaints
-3. Recommendations
+This project implements a **text classification system using BERT** (Bidirectional Encoder Representations from Transformers) to categorize Spanish user messages into three categories:
 
-The goal is to demonstrate the potential of pre-trained language models for Spanish text classification, covering data preparation, model training, evaluation, and error analysis.
+Information Requests
+Complaints
+Recommendations
+The goal is to demonstrate the ::potential of pre-trained language models for Spanish-language tasks**, covering the full pipeline: data preparation, model training, evaluation, and error analysis — all with a focus on real-world applicability.
 
 ## Key Features
 
-- Utilizes the pre-trained model:(dccuchile/bert-base-spanish-wwm-uncased).
-- Implements a three-class classification system.
-- Applies data augmentation techniques.
-- Provides detailed evaluation of model performance.
-- Explores challenging examples to test the model’s limits.
+- Fine-tunes the Spanish BERT model: dccuchile/bert-base-spanish-wwm-uncased
+- Implements a three-class classification task
+- Includes handcrafted, augmented training data
+- Provides detailed performance evaluation and visualizations
+- Tests model robustness with a curated set of challenging, real-like examples
 
 ## Why It Matters
 
-**Efficient classification of user messages is essential for improving customer service, detecting key trends in feedback, and prioritizing responses.**
-This project shows how state-of-the-art language models can be leveraged to understand customer input in Spanish, a language that is often underrepresented in NLP research.
+Efficient classification of user messages is essential for:
+
+- Improving customer support workflows
+- Detecting common pain points and user trends
+- Prioritizing messages in high-volume scenarios
+- This project showcases how state-of-the-art models can help interpret messages in Spanish, a language still underrepresented in many NLP applications.
 
 ## Dataset
 
-- Dataset is embedded directly in the notebook.
-- Consists of Spanish messages labeled into the three categories: requests, complaints, recommendations.
-- Augmented to ensure 100 examples per class to improve model training.
+- The dataset is embedded directly in the notebook.
+- It consists of short messages in Spanish labeled into three categories:
+   - 0 = Information Request
+   - 1 = Complaint
+   - 2 = Recommendation
+- Each class contains approximately 100 manually written examples.
+- A separate set of challenging examples was added to test the model’s ability to deal with ambiguity, mixed intent, and subtle tone.
 
 ## Technologies Used
 
-- **Python**
-- **Jupyter Notebook**
-- **Pandas** for data manipulation
-- **Scikit-learn** for data splitting and evaluation metrics
-- **Simpletransformers** for easy implementation of BERT models
-- **Matplotlib y Seaborn** Matplotlib & Seaborn: for result visualization
+- Python
+- Jupyter Notebook
+- pandas, scikit-learn for data manipulation and metrics
+- SimpleTransformers (built on HuggingFace Transformers)
+- Matplotlib & Seaborn for visualizations
 
 ## Installation and Usage
 
-### Option 1: Local Execution
+### Option 1: Run locally
 
-1. Clone the repository:
-   git clone https://github.com/BeaEsparcia/Spanish_Text_Classification_BERT.git
-cd clasificacion_texto_espanol_bert
-2. Install the required packages:
-   pip install -r requirements.txt
-3. Launch Jupyter Notebook:
-   jupyter notebook
-4. Open Clasificacion_texto_espanol_BERT.ipynb and run all cells
+git clone https://github.com/BeaEsparcia/Spanish_Text_Classification_BERT.git
+cd Spanish_Text_Classification_BERT
+pip install -r requirements.txt
+jupyter notebook
+
+Then open bert_spanish_intent_classifier.ipynb and run all cells.
 
 ### Option 2: Run on Google Colab
 
-1. Open Google Colab.
-2. Upload Clasificacion_texto_espanol_BERT.ipynb.
-3. Ensure runtime is set to GPU:
-   - Go to "Runtime" > "Change runtime type"
-   - Select "GPU"
-4. Run all cells.
-
-- If needed, ad:
-  !pip install simpletransformers pandas scikit-learn matplotlib seaborn
+1. Open Colab and upload the notebook.
+2. Go to Runtime > Change runtime type and select GPU.
+3. Run all cells.
+4. If needed, run:
+   !pip install simpletransformers pandas scikit-learn matplotlib seaborn
 
 ## Methodology
 
 ### Preprocessing & Data Augmentation
 
-- Conversion to lowercase.
-- Handling ambiguous messages.
-- Augmenting the dataset to 100 examples per class.
+- Preprocessing & Data Design
+- Messages written in natural Spanish.
+- Class-balanced dataset (≈100 examples per class).
+- Manual crafting of multi-intent and ambiguous messages to challenge the model.
 
 ### Model Selection
 
-- Initial tests with an English BERT model led to poor results.
-- Switching to dccuchile/bert-base-spanish-wwm-uncased improved classification.
+- Initial tests with an English BERT model performed poorly on Spanish.
+- Switching to dccuchile/bert-base-spanish-wwm-uncased significantly improved results.
 
 ### Training Process
 
-- Used Simpletransformers for efficient fine-tuning.
-- Applied cross-validation and monitored overfitting signs.
+- Trained using **SimpleTransformers** with:
+   - Early stopping
+   - Evaluation after each epoch
+   - Weight decay for regularization
 
 ### Evaluation
 
-- Precision, Recall, and F1-score calculated for each class.
-- Error analysis performed on misclassified messages.
+- Used classification_report and confusion matrix.
+- Metrics: Precision, Recall, F1-score (macro and per-class)
+- Heatmap visualization for interpretability
 
 ## Results & Observations
 
-- Overall Accuracy: Improved after switching to a Spanish pre-trained model.
-- Performance on challenging cases: 47% accuracy on specially curated hard-to-classify messages.
-- Key challenges:
-     - Ambiguity between categories (some requests felt like recommendations).
-     - Mixed context within a single message.
-     - Linguistic complexity (informal language, sarcasm, abbreviations).
+- Perfect performance on the clean validation set
+- 47% accuracy on manually designed challenging examples
 
-## Limitations & Future Improvements
+### Common failure cases:
 
-- **Expand dataset:** Collect more diverse and complex messages.
-- **Fine-tuning:** Explore hyperparameter tuning and regularization.
-- **Advanced preprocessing:** Explore techniques like entity recognition or semantic clustering.
-- **Compare with other architectures:** Test DistilBERT, RoBERTa, or newer multilingual models.
+- Requests expressed as complaints
+- Messages with mixed tones (e.g. “great product, but…”)
+- Ambiguous language or multi-intent phrasing
+
+## Limitations & Future Work
+
+- Expand the dataset with real-world messages from users
+- Explore advanced preprocessing (e.g. semantic clustering, negation handling)
+- Test other architectures like RoBERTa, DistilBERT, or mDeBERTa
+- Implement intent detection with multi-label classification or confidence thresholds
 
 ## What I Learned
 
-- **Model choice matters:** Starting with an English model gave poor results, but switching to a Spanish-specific model was a game changer.
-- **Data quality is everything:** Adding just a few challenging examples exposed weaknesses that traditional metrics didn’t reveal.
-- **Spanish NLP still needs work:** Many models and tools are heavily optimized for English, making it crucial to test and adapt when working in Spanish.
-
+- Model choice matters: a Spanish-specific model was essential for good performance.
+- Clean data ≠ real performance: challenging examples revealed weaknesses hidden by high scores.
+- Spanish NLP needs more attention: toolkits and models are still largely English-focused.
+  
 ## Contributions
 
-Contributions are welcome! Please open an issue to propose changes or improvements.
+Open to suggestions and improvements!
+Feel free to open an issue or submit a pull request.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE.md file for details.
+This project is licensed under the MIT License. See LICENSE.md for more information.
 
 ## Contact
 
