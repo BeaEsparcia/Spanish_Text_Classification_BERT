@@ -12,7 +12,7 @@ The goal is to demonstrate the ::potential of pre-trained language models for Sp
 
 - Fine-tunes the Spanish BERT model: dccuchile/bert-base-spanish-wwm-uncased
 - Implements a three-class classification task
-- Includes handcrafted, augmented training data
+- Includes synthetic and augmented training data
 - Provides detailed performance evaluation and visualizations
 - Tests model robustness with a curated set of challenging, real-like examples
 
@@ -66,10 +66,10 @@ Then open bert_spanish_intent_classifier.ipynb and run all cells.
 
 ### Preprocessing & Data Augmentation
 
-- Preprocessing & Data Design
-- Messages written in natural Spanish.
-- Class-balanced dataset (≈100 examples per class).
-- Manual crafting of multi-intent and ambiguous messages to challenge the model.
+- Messages were written in natural, conversational Spanish.
+- Synthetic, class-balanced dataset (≈100 examples per class).
+- Examples were designed to simulate real user messages across three categories.
+- A curated set of challenging messages — including multi-intent and ambiguous phrasing — was created to test model robustness.
 
 ### Model Selection
 
@@ -92,7 +92,7 @@ Then open bert_spanish_intent_classifier.ipynb and run all cells.
 ## Results & Observations
 
 - Perfect performance on the clean validation set
-- 47% accuracy on manually designed challenging examples
+- 47% accuracy on synthetic challenging examples designed to simulate real-world ambiguity.
 
 ### Common failure cases:
 
