@@ -32,7 +32,7 @@ Efficient classification of user messages is essential for:
    - 0 = Information Request
    - 1 = Complaint
    - 2 = Recommendation
-- Each class contains approximately 100 manually written examples.
+- Each class contains approximately 100 synthetic examples, created to reflect realistic user intents.
 - A separate set of challenging examples was added to test the model’s ability to deal with ambiguity, mixed intent, and subtle tone.
 
 ## Technologies Used
